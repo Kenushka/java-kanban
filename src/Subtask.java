@@ -1,5 +1,3 @@
-//Подзадачи эпика
-
 public class Subtask extends Task {
     private int epicId;
 
@@ -16,13 +14,13 @@ public class Subtask extends Task {
     }
 
     @Override
-    public String toString() {
-        return "ID подзадачи: " + getId() +
-                ", Название: '" + getName() + '\'' +
-                ", Описание: '" + getDescription() + '\'' +
-                ", Статус: " + getStatus() +
-                ", ID Эпика: " + epicId +
-                '}';
+    public TaskType getType() {
+        return TaskType.SUBTASK;
     }
 
+    @Override
+    public String toString() {
+        return "ID подзадачи: " + getId() + ", Название: '" + getName() + "', Описание: '" + getDescription() +
+                "', Статус: " + getStatus() + ", ID Эпика: " + epicId;
+    }
 }

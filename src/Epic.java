@@ -1,31 +1,30 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Epic extends Task {
-    private ArrayList<Integer> subtaskIds = new ArrayList<>();
+    private final List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String name, String description) {
         super(name, description);
     }
 
-    public void addSubtaskId(int id) {
-        subtaskIds.add(id);
+    public List<Integer> getSubtaskIds() {
+        return subtaskIds;
     }
 
     public void removeSubtaskId(int id) {
-        subtaskIds.remove(Integer.valueOf(id)); // важно: удаление по значению, а не индексу
+        subtaskIds.remove((Integer) id);
     }
 
-    public ArrayList<Integer> getSubtaskIds() {
-        return subtaskIds;
+    @Override
+    public TaskType getType() {
+        return TaskType.EPIC;
     }
 
     @Override
     public String toString() {
-        return "ID эпика: '" + getId() +
-                ", Название: '" + getName() + '\'' +
-                ", Описание: '" + getDescription() + '\'' +
-                ", Статус: " + getStatus() +
-                '}';
+        return "ID эпика: " + getId() + ", Название: '" +
+                getName() + "', Описание: '" + getDescription() +
+                "', Статус: " + getStatus();
     }
-
 }

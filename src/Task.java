@@ -1,16 +1,17 @@
 import java.util.Objects;
 
-//Базовые задачи
 public class Task {
     private String name;
     private String description;
     private int id;
+    private TaskStatus status = TaskStatus.NEW;
 
-    public Task(String name, String description){
+    public Task(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -18,10 +19,12 @@ public class Task {
         return id;
     }
 
-    private TaskStatus status = TaskStatus.NEW;
-
     public TaskStatus getStatus() {
         return status;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
     }
 
     public String getName() {
@@ -32,8 +35,13 @@ public class Task {
         return description;
     }
 
-    public void setStatus(TaskStatus status) {
-        this.status = status;
+    public TaskType getType() {
+        return TaskType.TASK;
+    }
+
+    @Override
+    public String toString() {
+        return "ID Задачи: " + id + ", Название: '" + name + "', Описание: '" + description + "', Статус: " + status;
     }
 
     @Override
@@ -45,15 +53,6 @@ public class Task {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return  "ID Задачи '" + id + '\'' + ", Название: '" + name + '\'' +
-                ", Описание: '" + description + '\'' +
-                ", Статус: " + status +
-                '}';
+        return Objects.hash(id);
     }
 }
-
