@@ -4,7 +4,9 @@ public class InMemoryTaskManager implements TaskManager {
     private final Map<Integer, Task> tasks = new HashMap<>();
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
+    private final HistoryLastVisit historyLastVisit = new HistoryLastVisit();
     private int id = 1;
+
 
     private int generateId() {
         return id++;
@@ -153,4 +155,10 @@ public class InMemoryTaskManager implements TaskManager {
             epic.setStatus(TaskStatus.IN_PROGRESS);
         }
     }
+
+    @Override
+    public List<Task> getHistory() {
+        return historyLastVisit.getHistory();
+    }
+
 }
