@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryLastVisit{
+public class HistoryLast10Visit {
     private final List<Task> historyList = new ArrayList<>();
 
     public void add(Task task){
