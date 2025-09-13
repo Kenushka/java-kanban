@@ -1,7 +1,10 @@
 package test;
 
-import main.*;
 import org.junit.jupiter.api.Test;
+import task.Epic;
+import task.Subtask;
+import task.Task;
+import task.TaskType;
 
 import static org.junit.jupiter.api.Assertions.*;
 

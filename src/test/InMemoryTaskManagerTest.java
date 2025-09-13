@@ -1,8 +1,13 @@
 package test;
 
-import main.*;
+import manager.InMemoryTaskManager;
+import manager.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import task.Epic;
+import task.Subtask;
+import task.Task;
+import task.TaskStatus;
 
 import java.util.List;
 

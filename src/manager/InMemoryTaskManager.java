@@ -1,4 +1,10 @@
-package main;
+package manager;
+
+import history.HistoryManager;
+import task.Epic;
+import task.Subtask;
+import task.Task;
+import task.TaskStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
