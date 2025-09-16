@@ -13,13 +13,13 @@ class ManagersTest {
     void getDefaultReturnsNonNullTaskManager() {
         TaskManager manager = Managers.getDefault();
         assertNotNull(manager);
-        assertTrue(manager instanceof TaskManager);
+        assertInstanceOf(TaskManager.class, manager);
     }
 
     @Test
     void getDefaultHistoryReturnsNonNullHistoryManager() {
         HistoryManager historyManager = Managers.getDefaultHistory();
         assertNotNull(historyManager);
-        assertTrue(historyManager instanceof HistoryManager);
+        assertInstanceOf(HistoryManager.class, historyManager);
     }
 }

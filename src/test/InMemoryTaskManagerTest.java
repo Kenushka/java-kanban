@@ -1,6 +1,6 @@
 package test;
 
-import manager.InMemoryTaskManager;
+import manager.Managers;
 import manager.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,18 +16,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class InMemoryTaskManagerTest {
 
     private TaskManager manager;
+    private Task task;
+    private Epic epic;
+    private Subtask sub;
 
     @BeforeEach
     void setup() {
-        manager = new InMemoryTaskManager();
+        manager = Managers.getDefault();
+        task = new Task("Task", "Desc");
+        epic = new Epic("Epic", "Desc");
+        sub = new Subtask("Sub", "Desc");
     }
 
     @Test
     void addAndRetrieveTasks() {
-        Task task = new Task("Task", "Desc");
-        Epic epic = new Epic("Epic", "Desc");
-        Subtask sub = new Subtask("Sub", "Desc");
-
         manager.createTask(task);
         manager.createTask(epic);
         sub.setEpicId(epic.getId());
@@ -44,10 +46,6 @@ class InMemoryTaskManagerTest {
 
     @Test
     void deleteAllTasksEpicsSubtasks() {
-        Task task = new Task("Task", "Desc");
-        Epic epic = new Epic("Epic", "Desc");
-        Subtask sub = new Subtask("Sub", "Desc");
-
         manager.createTask(task);
         manager.createTask(epic);
         sub.setEpicId(epic.getId());
@@ -65,10 +63,6 @@ class InMemoryTaskManagerTest {
 
     @Test
     void deleteById() {
-        Task task = new Task("Task", "Desc");
-        Epic epic = new Epic("Epic", "Desc");
-        Subtask sub = new Subtask("Sub", "Desc");
-
         manager.createTask(task);
         manager.createTask(epic);
         sub.setEpicId(epic.getId());
@@ -84,7 +78,6 @@ class InMemoryTaskManagerTest {
 
     @Test
     void updateTaskStatus() {
-        Task task = new Task("Task", "Desc");
         manager.createTask(task);
         task.setStatus(TaskStatus.DONE);
         manager.updateTask(task);
@@ -94,7 +87,6 @@ class InMemoryTaskManagerTest {
 
     @Test
     void historyLimitAndTypes() {
-        Epic epic = new Epic("Epic", "Desc");
         manager.createTask(epic);
 
         for (int i = 0; i < 15; i++) {
@@ -143,9 +135,7 @@ class InMemoryTaskManagerTest {
     }
 
     @Test
-    void taskRemainsImmutableAfterAdding() {
-        Task task = new Task("Task", "Desc");
-        task.setStatus(TaskStatus.NEW);
+    void taskRemainsImmutableAfterAdding() {        task.setStatus(TaskStatus.NEW);
         manager.createTask(task);
 
         assertEquals("Task", task.getName());

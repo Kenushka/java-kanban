@@ -7,7 +7,7 @@ import task.TaskStatus;
 
 public class Main {
     public static void main(String[] args) {
-        TaskManager manager = new InMemoryTaskManager();
+        TaskManager manager = Managers.getDefault();
 
         // 2 обычные задачи
         Task task1 = new Task("Задача 1", "Описание 1");
